@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
 import './Pokemon.css'
 
+import { Route } from 'react-router-dom'
+import PokemonInfo from './PokemonInfo'
+
 class Pokemon extends Component {
     state = {
-        pokeName: '',
+        pokeNum: '',
     }
 
     handleChange = (e) => {
-        const pokeName = e.currentTarget.value
-        this.setState({ pokeName })
+        const pokeNum = e.currentTarget.value
+        this.setState({ pokeNum })
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.history.push(`/pokemon/${this.state.pokeName}`)
+        this.props.history.push(`/pokemon/${this.state.pokeNum}`)
     }
 
     render(){
@@ -26,7 +29,7 @@ class Pokemon extends Component {
                     <div>
                         <input 
                             type="text"
-                            value={this.state.pokeName}
+                            value={this.state.pokeNum}
                             onChange={this.handleChange}
                         />
                     </div>
@@ -34,6 +37,9 @@ class Pokemon extends Component {
                         <button type="submit">Look up a Pokémon!</button>
                     </div>
                 </form>
+
+                <Route exact path='/pokemon' render={() => <h3>Please enter a number between 1 and 721</h3>} />
+                <Route path='/pokemon/:pokeNum' component={PokemonInfo} />
             </div>
         )
     }

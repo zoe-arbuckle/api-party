@@ -1,0 +1,8 @@
+.pokemon-info img {
+    height: 200px;
+    border-radius: 50%;
+}
+
+.pokemon-info h3 {
+    color: #999;
+}
