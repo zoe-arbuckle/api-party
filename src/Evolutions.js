@@ -5,7 +5,7 @@ class Evolutions extends Component {
         species: {
             evolution_chain: '',
         },
-        id: 1,
+        id: this.props.id,
         evolution_chain: {
             id: '',
             chain: {
@@ -33,20 +33,21 @@ class Evolutions extends Component {
     constructor(props) {
         super(props)
 
-        this.fetchEvolutionData()
+        this.fetchEvolutionData(props)
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.pokemon.id) {
             const idChanged = nextProps.pokemon.id !== this.state.id
             if (idChanged) {
-                this.fetchEvolutionData()
+                this.setState({id: nextProps.pokemon.id }) 
+                this.fetchEvolutionData(nextProps)
             }
         }
     }
 
-    fetchEvolutionData = () => {
-        fetch(`http://pokeapi.co/api/v2/pokemon-species/${this.props.pokemon.id}`)
+    fetchEvolutionData = (props) => {
+        fetch(`http://pokeapi.co/api/v2/pokemon-species/${props.pokemon.id}`)
             .then(response => response.json())
             .then(species => this.setState({ species }))
             .then(this.fetchEvolutionChain)
