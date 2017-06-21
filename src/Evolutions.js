@@ -62,7 +62,7 @@ class Evolutions extends Component {
     }
 
     fetchEvolutionSprite = () => {
-        if (this.state.evolution_chain.chain) {
+        if (this.state.evolution_chain.chain.evolves_to[0]) {
             fetch(`http://pokeapi.co/api/v2/pokemon/${this.state.evolution_chain.chain.evolves_to[0].species.name}`)
                 .then(response => response.json())
                 .then(evolution => this.setState({ evolution }))
@@ -74,7 +74,7 @@ class Evolutions extends Component {
         return (
             this.props.displayed
                 ? <div>
-                    {chain ?
+                    {chain.evolves_to[0] ?
                         <div>
                             <img src={this.state.evolution.sprites.front_default} alt='evolution' />
                             <figcaption>{chain.evolves_to[0].species.name}</figcaption>
