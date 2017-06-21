@@ -10,6 +10,17 @@ class PokemonInfo extends Component {
             name: '',
             weight: '',
             height: '',
+            types: [{
+                type: {
+                    name: '',
+                }
+            },
+            {
+                type: {
+                    name: '',
+                },
+            }
+            ],
         },
     }
 
@@ -32,14 +43,26 @@ class PokemonInfo extends Component {
             .then(pokemon => this.setState({ pokemon }))
     }
 
+    hasSecondaryType = () => {
+        if(this.state.pokemon.types.length > 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     render() {
         const { pokemon } = this.state
         return (
             <div className="pokemon-info">
                 <img src={pokemon.sprites.front_default} alt="sprite" />
-                <h2>{pokemon.name}</h2>
-                <h3>height: {pokemon.height}</h3>
-                <h3>weight: {pokemon.weight}</h3>
+                <h2>{pokemon.name.toUpperCase()}</h2>
+                <p></p>
+                <h3>type: {pokemon.types[0].type.name}</h3>
+                
+                {this.hasSecondaryType() ? <h3>secondary type: {pokemon.types[1].type.name}</h3> : null}
+                <h4>height: {pokemon.height}</h4>
+                <h4>weight: {pokemon.weight}</h4>
             </div>
         )
     }

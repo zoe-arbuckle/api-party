@@ -3,6 +3,6 @@
     border-radius: 50%;
 }
 
-.pokemon-info h3 {
+.pokemon-info h3, h4{
     color: #999;
 }
