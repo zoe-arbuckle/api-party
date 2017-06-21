@@ -11,6 +11,13 @@
     padding-bottom: 2rem;
 }
 
+.pokemon-info button{
+    max-width: 250px;
+    background-color: initial;
+    border: 1px solid white;
+    outline: none;
+}
+
 .bug {
     background-color: darkgreen;
 }
