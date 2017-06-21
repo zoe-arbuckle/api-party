@@ -53,7 +53,7 @@ class Evolutions extends Component {
     }
 
     fetchEvolutionChain = () => {
-        fetch(this.state.species.evolution_chain)
+        fetch(this.state.species.evolution_chain.url)
                 .then(response => response.json())
                 .then(evolution_chain => this.setState({ evolution_chain }))
                 .then(this.fetchEvolutionSprite)
