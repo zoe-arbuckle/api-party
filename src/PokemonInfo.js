@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './PokemonInfo.css'
 
+import Evolutions from './Evolutions'
+
 class PokemonInfo extends Component {
     state = {
         pokemon: {
@@ -8,6 +10,7 @@ class PokemonInfo extends Component {
                 front_default: '',
             },
             name: '',
+            id: '',
             weight: '',
             height: '',
             types: [{
@@ -22,6 +25,7 @@ class PokemonInfo extends Component {
             }
             ],
         },
+        displayed: false,
     }
 
     constructor(props) {
@@ -52,10 +56,12 @@ class PokemonInfo extends Component {
     }
 
     handleClick = (e) => {
-        if(e.currentTarget.textContent === 'Display Evolutions'){
-            e.currentTarget.textContent = 'Undisplay Evolutions'
+        if(e.currentTarget.textContent === 'Display Evolution'){
+            e.currentTarget.textContent = 'Undisplay Evolution'
+            this.setState({displayed: true})
         } else{
-            e.currentTarget.textContent = 'Display Evolutions'
+            e.currentTarget.textContent = 'Display Evolution'
+            this.setState({displayed: false})
         }
     }
 
@@ -73,7 +79,7 @@ class PokemonInfo extends Component {
                     <div>
                         {this.hasSecondaryType()
                             ? <h2>{pokemon.types[0].type.name}/{pokemon.types[1].type.name}</h2>
-                            : <h2>{pokemon.types[0].type.name}}</h2>}
+                            : <h2>{pokemon.types[0].type.name}</h2>}
                     </div>
                     <h4>height: {hStr} m</h4>
                     <h4>weight: {wStr} kg</h4>
@@ -81,9 +87,10 @@ class PokemonInfo extends Component {
                         {/*probs will add in a component for the evolutions tomorrow*/}
                         <button type="onClick" onClick={this.handleClick}
                             className={`${pokemon.types[0].type.name}`}>
-                                Display Evolutions
+                                Display Evolution
                         </button>
                     </div>
+                    <Evolutions pokemon={this.state.pokemon} displayed={this.state.displayed}/>
                 </div>
             )
         } else {

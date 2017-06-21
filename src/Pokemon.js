@@ -38,7 +38,7 @@ class Pokemon extends Component {
                     </div>
                 </form>
 
-                <Route exact path='/pokemon' render={() => <h3>Please enter a number between 1 and 721</h3>} />
+                <Route exact path='/pokemon' render={() => <h3>Please enter a number between 1 and 721 or a Pokémon name</h3>} />
                 <Route path='/pokemon/:pokeNum' component={PokemonInfo} />
             </div>
         )
