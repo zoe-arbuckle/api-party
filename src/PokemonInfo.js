@@ -84,7 +84,6 @@ class PokemonInfo extends Component {
                     <h4>height: {hStr} m</h4>
                     <h4>weight: {wStr} kg</h4>
                     <div>
-                        {/*probs will add in a component for the evolutions tomorrow*/}
                         <button type="onClick" onClick={this.handleClick}
                             className={`${pokemon.types[0].type.name}`}>
                                 Display Evolution

@@ -2,8 +2,12 @@ import React, { Component } from 'react'
 
 class Evolutions extends Component {
     state = {
+        species: {
+            evolution_chain: '',
+        },
+        id: 1,
         evolution_chain: {
-            id: this.props.pokemon.id,
+            id: '',
             chain: {
                 evolves_to: [
                     {
@@ -34,7 +38,7 @@ class Evolutions extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.pokemon.id) {
-            const idChanged = nextProps.pokemon.id !== this.state.evolution_chain.id
+            const idChanged = nextProps.pokemon.id !== this.state.id
             if (idChanged) {
                 this.fetchEvolutionData()
             }
@@ -42,10 +46,17 @@ class Evolutions extends Component {
     }
 
     fetchEvolutionData = () => {
-        fetch(`http://pokeapi.co/api/v2/evolution-chain/${this.props.pokemon.id}`)
+        fetch(`http://pokeapi.co/api/v2/pokemon-species/${this.props.pokemon.id}`)
             .then(response => response.json())
-            .then(evolution_chain => this.setState({ evolution_chain }))
-            .then(this.fetchEvolutionSprite)
+            .then(species => this.setState({ species }))
+            .then(this.fetchEvolutionChain)
+    }
+
+    fetchEvolutionChain = () => {
+        fetch(this.state.species.evolution_chain)
+                .then(response => response.json())
+                .then(evolution_chain => this.setState({ evolution_chain }))
+                .then(this.fetchEvolutionSprite)
     }
 
     fetchEvolutionSprite = () => {
