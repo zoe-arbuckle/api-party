@@ -3,6 +3,7 @@ import './Evolutions.css'
 
 class Evolutions extends Component {
     state = {
+        //TODO: Add description (flavor_text) and the full evolution chain
         species: {
             evolution_chain: '',
         },
