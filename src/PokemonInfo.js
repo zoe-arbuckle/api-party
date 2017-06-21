@@ -53,16 +53,18 @@ class PokemonInfo extends Component {
 
     render() {
         const { pokemon } = this.state
+        let hStr = pokemon.height.toString()
+        let wStr = pokemon.weight.toString()
+        hStr = hStr.substr(0, hStr.length - 1) + '.' + hStr.substr(hStr.length - 1)
+        wStr = wStr.substr(0, wStr.length - 1) + '.' + wStr.substr(wStr.length - 1)
         return (
             <div className="pokemon-info">
                 <img src={pokemon.sprites.front_default} alt="sprite" />
                 <h2>{pokemon.name.toUpperCase()}</h2>
-                <p></p>
                 <h3>type: {pokemon.types[0].type.name}</h3>
-                
                 {this.hasSecondaryType() ? <h3>secondary type: {pokemon.types[1].type.name}</h3> : null}
-                <h4>height: {pokemon.height}</h4>
-                <h4>weight: {pokemon.weight}</h4>
+                <h4>height: {hStr} m</h4>
+                <h4>weight: {wStr} kg</h4>
             </div>
         )
     }
