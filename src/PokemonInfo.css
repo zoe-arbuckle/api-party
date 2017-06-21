@@ -2,6 +2,79 @@
     height: 150px;
 }
 
-.pokemon-info h3, h4{
-    color: #999;
+.pokemon-info h3, h4, h2{
+    color: white;
+}
+
+.pokemon-info {
+    border-radius: 85%;
+    padding-bottom: 2rem;
+}
+
+.bug {
+    background-color: darkgreen;
+}
+
+.dragon {
+    background-color: blue;
+}
+
+.fairy {
+    background-color: lightpink;
+}
+
+.fire {
+    background-color: orange;
+}
+
+.ghost {
+    background-color: plum;
+}
+
+.ground {
+    background-color: tan;
+}
+
+.normal {
+    background-color: lightgray;
+}
+
+.steel {
+    background-color: steelblue;
+}
+
+.dark {
+    background-color: darkslategray;
+}
+
+.electric {
+    background-color: yellow;
+}
+
+.fighting {
+    background-color: darkorange;
+}
+
+.flying {
+    background-color: lightskyblue;
+}
+
+.grass {
+    background-color: lightgreen;
+}
+
+.ice {
+    background-color: #81E5E2;
+}
+
+.poison {
+    background-color: #D69CE5;
+}
+
+.rock {
+    background-color: #5B431B;
+}
+
+.water {
+    background-color: darkblue;
 }

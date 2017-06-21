@@ -58,11 +58,11 @@ class PokemonInfo extends Component {
         hStr = hStr.substr(0, hStr.length - 1) + '.' + hStr.substr(hStr.length - 1)
         wStr = wStr.substr(0, wStr.length - 1) + '.' + wStr.substr(wStr.length - 1)
         return (
-            <div className="pokemon-info">
+            <div className={`pokemon-info ${pokemon.types[0].type.name}`}>
                 <img src={pokemon.sprites.front_default} alt="sprite" />
                 <h2>{pokemon.name.toUpperCase()}</h2>
-                <h3>type: {pokemon.types[0].type.name}</h3>
-                {this.hasSecondaryType() ? <h3>secondary type: {pokemon.types[1].type.name}</h3> : null}
+                <h2>type: {pokemon.types[0].type.name}</h2>
+                {this.hasSecondaryType() ? <h2>secondary type: {pokemon.types[1].type.name}</h2> : null}
                 <h4>height: {hStr} m</h4>
                 <h4>weight: {wStr} kg</h4>
             </div>
