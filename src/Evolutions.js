@@ -61,7 +61,7 @@ class Evolutions extends Component {
         return (
             this.props.displayed
                 ? <div>
-                    {chain.evolves_to[0] ?
+                    {chain ?
                         <div>
                             <img src={this.state.evolution.sprites.front_default} alt='evolution' />
                             <figcaption>{chain.evolves_to[0].species.name}</figcaption>
