@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './Evolutions.css'
 
 class Evolutions extends Component {
     state = {
